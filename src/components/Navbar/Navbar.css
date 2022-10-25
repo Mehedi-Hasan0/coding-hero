@@ -1,0 +1,17 @@
+nav a {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  color: #171717;
+}
+
+nav a:hover {
+  color: #0795fe;
+  transition: 0.2s ease-in;
+}
+
+.nav-links a {
+  margin-inline: 1rem;
+}
+.mobile-nav-links a {
+  margin: 0.5rem 0 0.5rem 1rem;
+}
