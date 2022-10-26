@@ -27,6 +27,12 @@ const UserContext = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
+    // sign in with github 
+    const loginWithGithub = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    }
+
     // sign out function
     const logOut = () => {
         setLoading(true)
@@ -55,6 +61,7 @@ const UserContext = ({ children }) => {
         logOut,
         updateUserProfile,
         loginWithGoogle,
+        loginWithGithub,
         loading
     }
 

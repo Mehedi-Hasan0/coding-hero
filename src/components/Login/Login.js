@@ -3,14 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 import google from '../../assets/google.svg';
 import github from '../../assets/github.svg';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn, loginWithGoogle } = useContext(AuthContext);
+    const { signIn, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const googleProvider = new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -39,8 +40,19 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/')
             })
             .catch(error => console.error(error))
+    }
+    const handleGithubSignIn = () => {
+        loginWithGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            }).catch(error => {
+                console.error(error);
+            })
     }
     return (
         <div className='mt-10 mx-16 font-poppins'>
@@ -71,11 +83,11 @@ const Login = () => {
                     <p className=' text-center text-base'>---  Or Login With  ---</p>
                     <hr className=' bg-slate-400 h-[2px] my-1' />
                     <div onClick={handleGoogleSignIn} className=' flex flex-row justify-around items-center'>
-                        <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center'>
+                        <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center cursor-pointer'>
                             <img className=' w-[32px] rounded-full' src={google} alt="Google" />
                             <p className=' font-poppins text-base mx-2'>Google</p>
                         </div>
-                        <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center'>
+                        <div onClick={handleGithubSignIn} className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center cursor-pointer'>
                             <img className=' w-[32px] rounded-full' src={github} alt="Github" />
                             <p className=' font-poppins text-base mx-2'>Github</p>
                         </div>

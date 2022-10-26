@@ -39,7 +39,7 @@ const Navbar = () => {
                     user?.uid ?
                         <>
                             <Link onClick={logOut} to='/login'>Log out</Link>
-                            <div className='tooltip' data-tip={user.displayName} >
+                            <div className='tooltip tooltip-bottom' data-tip={user.displayName} >
                                 <img className="w-[32px] rounded-full" src={user?.photoURL ? user.photoURL : users} alt="user" />
                             </div>
                         </>
