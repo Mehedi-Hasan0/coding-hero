@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 import google from '../../assets/google.svg';
 import github from '../../assets/github.svg';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, loginWithGoogle } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider()
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,10 +25,22 @@ const Login = () => {
                 const user = result.user;
                 console.log('currentUser', user);
                 form.reset();
+                setError('');
                 navigate('/')
             }).catch(error => {
                 console.error(error);
+                setError(error.message);
             })
+
+    }
+    // sign in with google
+    const handleGoogleSignIn = () => {
+        loginWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
     }
     return (
         <div className='mt-10 mx-16 font-poppins'>
@@ -49,17 +65,18 @@ const Login = () => {
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>
                     </div>
+                    <p>{error}</p>
                     <p>New to Coding Hero? <Link className='text-[#570DF8] font-medium text-base' to='/register'>Register</Link></p>
                     <hr className=' bg-slate-400 h-[2px] my-1' />
                     <p className=' text-center text-base'>---  Or Login With  ---</p>
                     <hr className=' bg-slate-400 h-[2px] my-1' />
-                    <div className=' flex flex-row justify-around items-center'>
+                    <div onClick={handleGoogleSignIn} className=' flex flex-row justify-around items-center'>
                         <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center'>
-                            <img className=' w-[32px]' src={google} alt="Google" />
+                            <img className=' w-[32px] rounded-full' src={google} alt="Google" />
                             <p className=' font-poppins text-base mx-2'>Google</p>
                         </div>
                         <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center'>
-                            <img className=' w-[32px]' src={github} alt="Github" />
+                            <img className=' w-[32px] rounded-full' src={github} alt="Github" />
                             <p className=' font-poppins text-base mx-2'>Github</p>
                         </div>
                     </div>

@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -21,10 +23,23 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate('/')
+                setError('');
+                handleUpdateUserProfile(name, photoURL);
+                navigate('/');
             }).catch(error => {
                 console.error(error);
+                setError(error.message);
             })
+
+        const handleUpdateUserProfile = (name, photoURL) => {
+            const profile = {
+                displayName: name,
+                photoURL: photoURL
+            }
+            updateUserProfile(profile)
+                .then(() => { })
+                .catch(error => console.error(error));
+        }
     }
     return (
         <div className=' mt-10 mx-16 font-poppins'>
@@ -61,6 +76,7 @@ const Register = () => {
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>
                     </div>
+                    <p>{error}</p>
                     <p>Already have an account? <Link className='text-[#570DF8] font-medium text-base' to='/login'>Login</Link></p>
                 </form>
             </div>
