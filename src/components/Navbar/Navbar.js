@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logos.svg';
 import close from '../../assets/close.svg';
 import menu from '../../assets/menu.svg';
+import user from '../../assets/user.png';
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
@@ -18,18 +19,20 @@ const Navbar = () => {
 
             <div className='nav-links sm:flex hidden items-center mr-8'>
                 <Link to='/courses'>Courses</Link>
-                <Link to='/blog'>Blog</Link>
-                <Link to='/login'>Login</Link>
-                <Link to='/register'>Register</Link>
+                <Link to='/blogs'>Blog</Link>
+                <Link to='/faq'>FAQ</Link>
+                <Link to='/join'>Dark mode</Link>
+                <img src={user} alt="user" className='w-[32px] cursor-pointer ' />
             </div>
             <div className='sm:hidden flex flex-1 justify-end items-center mr-8'>
                 <img src={toggle ? close : menu} alt='menu' className='w-[28px] h-[28px] object-contain' onClick={() => setToggle((previous) => !previous)} />
 
                 <div className={`${toggle ? 'flex' : 'hidden'} p-6 bg-slate-50 absolute top-[4.125rem] right-0 min-w-[140px] rounded-xl`}>
                     <div className='mobile-nav-links flex flex-col justify-center'>
-
+                        <Link to='/faq'>FAQ</Link>
                         <Link to='/courses'>Courses</Link>
                         <Link to='/blog'>Blog</Link>
+                        <Link to='/join'>Dark mode</Link>
                     </div>
                 </div>
             </div>
