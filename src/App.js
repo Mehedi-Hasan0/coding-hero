@@ -5,6 +5,7 @@ import Courses from './components/Courses/Courses';
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register'
 import Sidebar from './components/Sidebar/Sidebar';
 import Main from './layout/Main';
 
@@ -37,6 +38,10 @@ function App() {
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: '/register',
+          element: <Register></Register>
         }
       ],
     }

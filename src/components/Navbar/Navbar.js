@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logos.svg';
 import close from '../../assets/close.svg';
 import menu from '../../assets/menu.svg';
-import user from '../../assets/user.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/UserContext';
+import users from '../../assets/user.png'
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [toggles, setToggles] = useState(false);
     const [toggleText, setToggleText] = useState('Light');
 
@@ -14,7 +17,7 @@ const Navbar = () => {
         setToggleText('Dark');
     }
     return (
-        <nav className='flex justify-between items-center py-5 w-full bg-slate-50 sticky top-0 shadow-md'>
+        <nav className='flex justify-between items-center py-5 w-full bg-slate-50 shadow-md'>
             <Link to='/' className=' hover:text-black'>
                 <div className='flex flex-row items-center'>
                     <img src={logo} alt="quiz show" className='w-[50px] ml-6' />
@@ -32,7 +35,15 @@ const Navbar = () => {
                         <input type="checkbox" className="toggle" unchecked />
                     </label>
                 </div>
-                <Link to='/login'>Login</Link>
+                {
+                    user?.uid ?
+                        <>
+                            <Link onClick={logOut} to='/login'>Log out</Link>
+                            <img src={user?.photoURL ? user.photoURL : users} alt="user" className=' w-[32px]' />
+                        </>
+                        :
+                        <Link to='/login'>Login</Link>
+                }
             </div>
             <div className='sm:hidden flex flex-1 justify-end items-center mr-8'>
                 <img src={toggles ? close : menu} alt='menu' className='w-[28px] h-[28px] object-contain' onClick={() => setToggles((previous) => !previous)} />
