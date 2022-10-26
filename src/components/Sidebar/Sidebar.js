@@ -1,9 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 
 const Sidebar = () => {
+    const [courses, setCourses] = useState([])
     return (
         <div>
-            <h2>This is a siderbar uaaasd</h2>
+            <h1>All Courses</h1>
         </div>
     );
 };
