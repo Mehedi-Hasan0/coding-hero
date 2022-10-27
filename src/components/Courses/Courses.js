@@ -8,7 +8,7 @@ const Courses = () => {
     console.log(courses);
 
     return (
-        <div className=' bg-slate-100'>
+        <div className=' bg-slate-100 mt-1'>
             <div className='flex flex-row lg:mx-14 md:mx-7'>
                 <div className=' w-1/4 hidden md:block bg-slate-50 shadow-lg '>
                     <Sidebar></Sidebar>

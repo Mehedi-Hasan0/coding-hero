@@ -4,7 +4,7 @@ import back from '../../assets/arrow-89-32.png';
 const Category = () => {
     const course_details = useLoaderData();
     return (
-        <div>
+        <div className='mt-1'>
             {
                 course_details.map(details => <div key={details.id} className=' bg-[#373f49]  text-white'>
                     <div className='flex lg:flex-row flex-col-reverse'>

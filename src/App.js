@@ -20,22 +20,22 @@ function App() {
       children: [
         {
           path: '/',
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://coding-hero-server-ten.vercel.app/courses'),
           element: <Home></Home>
         },
         {
           path: '/courses',
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://coding-hero-server-ten.vercel.app/courses'),
           element: <Courses></Courses>
         },
         {
           path: '/category/:id',
-          loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+          loader: ({ params }) => fetch(`https://coding-hero-server-ten.vercel.app/category/${params.id}`),
           element: <Category></Category>
         },
         {
           path: '/courses/:id',
-          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+          loader: ({ params }) => fetch(`https://coding-hero-server-ten.vercel.app/courses/${params.id}`),
           element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
         },
         {
