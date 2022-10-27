@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 import google from '../../assets/google.svg';
 import github from '../../assets/github.svg';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+    const { signIn, loginWithGoogle, loginWithGithub, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -27,10 +29,12 @@ const Login = () => {
                 console.log('currentUser', user);
                 form.reset();
                 setError('');
-                navigate('/')
+                navigate(from, { replace: true });
             }).catch(error => {
                 console.error(error);
                 setError(error.message);
+            }).finally(() => {
+                setLoading(false);
             })
 
     }
@@ -56,7 +60,7 @@ const Login = () => {
     }
     return (
         <div className='mt-10 mx-16 font-poppins'>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto my-8">
                 <h1 className=' text-4xl text-stone-800 text-center font-medium mt-4'>Login Now!</h1>
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">

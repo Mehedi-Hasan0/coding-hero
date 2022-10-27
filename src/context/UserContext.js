@@ -62,7 +62,8 @@ const UserContext = ({ children }) => {
         updateUserProfile,
         loginWithGoogle,
         loginWithGithub,
-        loading
+        loading,
+        setLoading
     }
 
     return (

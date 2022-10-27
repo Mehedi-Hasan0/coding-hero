@@ -7,6 +7,7 @@ import Courses from './components/Courses/Courses';
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register';
 import Main from './layout/Main';
 
@@ -34,7 +35,7 @@ function App() {
         {
           path: '/courses/:id',
           loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
-          element: <Checkout></Checkout>
+          element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
         },
         {
           path: '/blogs',
