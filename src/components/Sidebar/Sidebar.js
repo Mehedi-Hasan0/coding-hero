@@ -7,7 +7,7 @@ const Sidebar = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('https://coding-hero-server-ten.vercel.app/sideCategories')
+        fetch(' https://coding-hero-server-mehedi-hasan0.vercel.app/sideCategories')
             .then(res => res.json())
             .then(data => setCourses(data));
     }, [])

@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses);
+    // console.log(courses);
 
     return (
         <div className=' bg-slate-100 mt-1'>
