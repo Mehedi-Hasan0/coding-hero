@@ -74,14 +74,12 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                        <label className="label">
-                            <Link to="#" className="label-text-alt link link-hover">Forgot password?</Link>
-                        </label>
+                        <p>{error}</p>
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>
                     </div>
-                    <p>{error}</p>
+
                     <p>New to Coding Hero? <Link className='text-[#570DF8] font-medium text-base' to='/register'>Register</Link></p>
                     <hr className=' bg-slate-400 h-[2px] my-1' />
                     <p className=' text-center text-base'>---  Or Login With  ---</p>
