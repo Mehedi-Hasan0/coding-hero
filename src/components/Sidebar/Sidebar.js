@@ -13,13 +13,18 @@ const Sidebar = () => {
     }, [])
     return (
         <div>
-            <h1>All Courses: {courses.length}</h1>
-            <div>
-                {
-                    courses.map(course => <p key={course.id}>
-                        <Link to=''>{course.name}</Link>
-                    </p>)
-                }
+            <div className=' mt-12'>
+                <h1 className=' font-poppins text-xl lg:text-3xl text-gray-500 font-semibold text-center'>All Courses</h1>
+                <div className=' mt-8 mx-3'>
+                    {
+                        courses.map(course => <p
+                            className=' text-center my-3 lg:text-lg text-base font-poppins text-gray-800 font-medium hover:text-[#570DF8]  underline '
+                            key={course.id}>
+                            <Link to=''>{course.name}</Link>
+                        </p>)
+                    }
+                </div>
+
             </div>
         </div>
     );

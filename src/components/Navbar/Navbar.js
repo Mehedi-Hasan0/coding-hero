@@ -17,7 +17,7 @@ const Navbar = () => {
         setToggleText('Dark');
     }
     return (
-        <nav className='flex justify-between items-center py-5 w-full bg-slate-50 shadow-md'>
+        <nav className='flex justify-between items-center py-5 w-full shadow-lg'>
             <Link to='/' className=' hover:text-black'>
                 <div className='flex flex-row items-center'>
                     <img src={logo} alt="quiz show" className='w-[50px] ml-6' />
