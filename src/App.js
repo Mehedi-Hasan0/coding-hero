@@ -20,11 +20,8 @@ function App() {
           element: <Home></Home>
         },
         {
-          path: '/',
-          element: <Sidebar></Sidebar>
-        },
-        {
           path: '/courses',
+          loader: () => fetch('http://localhost:5000/courses'),
           element: <Courses></Courses>
         },
         {

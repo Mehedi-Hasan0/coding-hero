@@ -50,7 +50,7 @@ const Navbar = () => {
             <div className='sm:hidden flex flex-1 justify-end items-center mr-8'>
                 <img src={toggles ? close : menu} alt='menu' className='w-[28px] h-[28px] object-contain' onClick={() => setToggles((previous) => !previous)} />
 
-                <div className={`${toggles ? 'flex' : 'hidden'} p-6 bg-slate-50 absolute top-[4.125rem] right-0 min-w-[140px] rounded-xl`}>
+                <div className={`${toggles ? 'flex' : 'hidden'} p-6 bg-slate-50 absolute top-[4.125rem] right-0 min-w-[140px] rounded-xl block`}>
                     <div className='mobile-nav-links flex flex-col justify-center'>
                         <Link to='/faq'>FAQ</Link>
                         <Link to='/courses'>Courses</Link>
