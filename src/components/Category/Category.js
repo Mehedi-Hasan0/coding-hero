@@ -15,7 +15,7 @@ const Category = () => {
                             </Link>
                             <h1 className='font-poppins font-bold lg:text-5xl md:text-5xl text-4xl mb-4'>{details.course_header}</h1>
                             <p className='font-poppins md:text-lg text-base mb-6'>{details.course_description}</p>
-                            <button className="btn btn-primary">Get premium access</button>
+                            <Link to={`/courses/${details.id}`} className="btn btn-primary">Get premium access</Link>
                         </div>
                         <div className=' my-7 lg:mx-9 sm:mx-auto md:mx-auto mx-5 bg-white max-w-[500px] max-h-[500px]'>
                             <div className=' lg:my-auto'>

@@ -2,12 +2,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Blog from './components/Blog/Blog';
 import Category from './components/Category/Category';
+import Checkout from './components/Checkout/Checkout';
 import Courses from './components/Courses/Courses';
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-import Register from './components/Register/Register'
-import Sidebar from './components/Sidebar/Sidebar';
+import Register from './components/Register/Register';
 import Main from './layout/Main';
 
 function App() {
@@ -30,6 +30,11 @@ function App() {
           path: '/category/:id',
           loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
           element: <Category></Category>
+        },
+        {
+          path: '/courses/:id',
+          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+          element: <Checkout></Checkout>
         },
         {
           path: '/blogs',

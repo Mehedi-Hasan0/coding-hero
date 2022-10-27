@@ -29,7 +29,7 @@ const Courses = () => {
                                             <h2 className="card-title">{course.course_header}</h2>
                                             <p className=' font-poppins text-justify text-sm text-gray-500'>{course.course_description.slice(0, 120)}<Link className=' cursor-pointer underline text-[#570DF8] opacity-80' to={`/category/${course.id}`}>..see more</Link></p>
                                             <div className="card-actions justify-end mt-3">
-                                                <button className="btn btn-primary">Get premium access</button>
+                                                <Link to={`/courses/${course.id}`} className="btn btn-primary">Get premium access</Link>
                                             </div>
                                         </div>
                                     </div>
